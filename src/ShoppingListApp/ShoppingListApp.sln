@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.11.35312.102
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ShoppingList.Domain", "ShoppingList.Domain\ShoppingList.Domain.csproj", "{AF89DD38-1CA1-485A-9BF5-C069D0967534}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ShoppingList.Console", "ShoppingList.Console\ShoppingList.Console.csproj", "{5B2D49F1-E6EB-4181-9CC0-99F326028B01}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{AF89DD38-1CA1-485A-9BF5-C069D0967534}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AF89DD38-1CA1-485A-9BF5-C069D0967534}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AF89DD38-1CA1-485A-9BF5-C069D0967534}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AF89DD38-1CA1-485A-9BF5-C069D0967534}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5B2D49F1-E6EB-4181-9CC0-99F326028B01}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5B2D49F1-E6EB-4181-9CC0-99F326028B01}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5B2D49F1-E6EB-4181-9CC0-99F326028B01}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5B2D49F1-E6EB-4181-9CC0-99F326028B01}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {F5AC4889-7783-4437-96CD-E7B94489C292}
+	EndGlobalSection
+EndGlobal
