@@ -23,6 +23,13 @@ namespace ShoppingList.Infrastructure.Repository
                 .ToListAsync();
         }
 
+        public Task<List<Category>> FindAllWithDependenciesAsync()
+        {
+            return _dbcontext.Categories
+                .Include(x => x.Products)
+                .ToListAsync();
+        }
+
         public Task<Category> FindByNameAsync(string name)
         {
             return _dbcontext.Categories

@@ -11,5 +11,7 @@ namespace ShoppingList.Domain.Repository
     {
         Task<Category> FindByNameAsync(string name);
         Task<List<Category>> FindAllByNameStartedWithAsync(string text);
+
+        Task<List<Category>> FindAllWithDependenciesAsync();
     }
 }

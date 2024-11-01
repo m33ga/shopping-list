@@ -40,5 +40,13 @@ namespace ShoppingList.Infrastructure
             await _dbcontext.SaveChangesAsync();
 
         }
+        /// <summary>
+        /// This method returns the database path
+        /// </summary>
+        /// <returns></returns>
+        public string GetDbPath()
+        {
+            return _dbcontext.DbPath;
+        }
     }
 }
