@@ -9,14 +9,16 @@
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
     <Grid>
-        <NavigationView x:Name="nvMain" IsSettingsVisible="False" IsBackButtonVisible="Collapsed">
+        <NavigationView x:Name="nvMain" IsSettingsVisible="False" IsBackButtonVisible="Collapsed" 
+                        ItemInvoked="NvMain_OnItemInvoked">
             <NavigationView.MenuItems>
                 <NavigationViewItem x:Name="nvShoppingList" 
                                     Content="Shopping List" Icon="List"/>
                 <NavigationViewItem x:Name="nvProducts"
                                     Content="Products" Icon="Shop"/>
                 <NavigationViewItem x:Name="nvCategories"
-                                    Content="Categories" Icon="Library"/>
+                                    Content="Categories" Icon="Library"
+                                    Tag="categories"/>
                 <NavigationViewItem x:Name="nvUser"
                                     Content="Users" Icon="OtherUser"/>
 

@@ -12,6 +12,7 @@ using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
+using ShoppingList.UWP.Views.Categories;
 
 // The Blank Page item template is documented at https://go.microsoft.com/fwlink/?LinkId=402352&clcid=0x409
 
@@ -25,6 +26,21 @@ namespace ShoppingList.UWP
         public MainPage()
         {
             this.InitializeComponent();
+        }
+
+        private void NvMain_OnItemInvoked(NavigationView sender, NavigationViewItemInvokedEventArgs args)
+        {
+            var selectedItem = args.InvokedItemContainer as NavigationViewItem;
+            if (selectedItem != null)
+            {
+                switch (selectedItem.Tag)
+                {
+                    case "categories":
+                        frmMain.Navigate(typeof(ManageCategoriesPage));
+                        break;
+
+                }
+            }
         }
     }
 }
