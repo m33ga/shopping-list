@@ -1,0 +1,37 @@
+﻿<Page
+    x:Class="ShoppingList.UWP.Views.Categories.CategoryFormPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:ShoppingList.UWP.Views.Categories"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition />
+            </Grid.ColumnDefinitions>
+            <TextBlock Text="Add/Edit Category"
+                       Style="{StaticResource HeaderTextBlockStyle}"/>
+            <CommandBar x:Name="mainCommandBar" 
+                     Grid.Column="1"
+                     VerticalAlignment="Center"
+                     OverflowButtonVisibility="Collapsed"
+                     DefaultLabelPosition="Right"
+                     Background="Transparent">
+                <AppBarButton x:Name="btnNew" 
+                           Icon="Add" 
+                           Label="New" 
+                           Click="BtnNew_OnClick" />
+            </CommandBar>
+        </Grid>
+       
+    </Grid>
+</Page>

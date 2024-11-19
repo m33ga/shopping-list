@@ -125,6 +125,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ViewModels\BindableBase.cs" />
     <Compile Include="ViewModels\CategoryViewModel.cs" />
+    <Compile Include="Views\Categories\CategoryFormPage.xaml.cs">
+      <DependentUpon>CategoryFormPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\Categories\ManageCategoriesPage.xaml.cs">
       <DependentUpon>ManageCategoriesPage.xaml</DependentUpon>
     </Compile>
@@ -152,6 +155,10 @@
     <Page Include="MainPage.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\Categories\CategoryFormPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\Categories\ManageCategoriesPage.xaml">
       <SubType>Designer</SubType>
