@@ -163,7 +163,16 @@
       <Version>6.2.14</Version>
     </PackageReference>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\ShoppingList.Domain\ShoppingList.Domain.csproj">
+      <Project>{AF89DD38-1CA1-485A-9BF5-C069D0967534}</Project>
+      <Name>ShoppingList.Domain</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ShoppingList.Infrastructure\ShoppingList.Infrastructure.csproj">
+      <Project>{92B4EA90-35D4-4E08-A34E-47E9DD5BCEC3}</Project>
+      <Name>ShoppingList.Infrastructure</Name>
+    </ProjectReference>
+  </ItemGroup>
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">
     <VisualStudioVersion>14.0</VisualStudioVersion>
   </PropertyGroup>
