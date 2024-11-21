@@ -13,6 +13,7 @@ namespace ShoppingList.Domain.SeedWork
         Task<T> FindOrCreateAsync(T entity);
         Task<T> FindByIdAsync(int id);
         Task<List<T>> FindAllAsync();
+        Task<T> UpsertAsync(T entity);
 
     }
 }
