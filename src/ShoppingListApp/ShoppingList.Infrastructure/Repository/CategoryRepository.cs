@@ -47,5 +47,40 @@ namespace ShoppingList.Infrastructure.Repository
             }
             return e;
         }
+
+        public override async Task<Category> UpsertAsync(Category entity)
+        {
+            Category c = null;
+            Category existing = await FindByNameAsync(entity.Name);
+
+            if (existing == null)
+            {
+                if (entity.Id == 0)
+                {
+                    Create(entity);
+                }
+                else
+                {
+                    Update(entity);
+                }
+
+                c = entity;
+            }
+            else if (existing.Id == entity.Id)
+            {
+                if (existing.Name == entity.Name)
+                    Update(entity);
+
+                c = entity;
+            }
+            else
+            {
+                _dbcontext.Entry(entity).State = EntityState.Detached;
+            }
+
+
+            return c;
+
+        }
     }
 }

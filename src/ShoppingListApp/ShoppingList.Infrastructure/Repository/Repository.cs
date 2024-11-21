@@ -42,5 +42,9 @@ namespace ShoppingList.Infrastructure.Repository
         {
             _dbcontext.Update(entity);
         }
+
+        public abstract Task<T> UpsertAsync(T entity);
+
+
     }
 }

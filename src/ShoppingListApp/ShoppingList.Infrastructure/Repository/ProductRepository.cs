@@ -33,5 +33,10 @@ namespace ShoppingList.Infrastructure.Repository
             return e;
 
         }
+
+        public override Task<Product> UpsertAsync(Product entity)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
