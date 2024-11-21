@@ -12,6 +12,7 @@ using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
+using ShoppingList.Domain.Models;
 using ShoppingList.UWP.ViewModels;
 
 // The Blank Page item template is documented at https://go.microsoft.com/fwlink/?LinkId=234238
@@ -44,6 +45,22 @@ namespace ShoppingList.UWP.Views.Categories
         private void Grid_Tapped(object sender, TappedRoutedEventArgs e)
         {
             FlyoutBase.ShowAttachedFlyout(sender as FrameworkElement);
+        }
+
+        private void BtnEdit_OnClick(object sender, RoutedEventArgs e)
+        {
+            if (sender is FrameworkElement fe && fe.DataContext is Category category)
+            {
+                CategoryViewModel.Category = category;
+                Frame.Navigate(typeof(CategoryFormPage), CategoryViewModel);
+            }
+        }
+        private void BtnDelete_OnClick(object sender, RoutedEventArgs e)
+        {
+            if (sender is FrameworkElement fe && fe.DataContext is Category category)
+            {
+                CategoryViewModel.DeleteAsync(category);
+            }
         }
     }
 }

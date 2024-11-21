@@ -26,12 +26,24 @@
                      OverflowButtonVisibility="Collapsed"
                      DefaultLabelPosition="Right"
                      Background="Transparent">
-                <AppBarButton x:Name="btnNew" 
-                           Icon="Add" 
-                           Label="New" 
-                           Click="BtnNew_OnClick" />
+                <AppBarButton x:Name="btnSave" 
+                           Icon="Save" 
+                           Label="Save" 
+                           Click="BtnSave_OnClick" />
+                <AppBarButton x:Name="btnCancel" 
+                              Icon="Cancel"
+                              Label="Cancel"
+                              Click="BtnCancel_OnClick" />
             </CommandBar>
         </Grid>
-       
+       <StackPanel Grid.Row="1" HorizontalAlignment="Left" Padding="0, 30">
+            <TextBox x:Name="txtName" 
+                     Header="Name" 
+                     Width="300"
+                     Text="{x:Bind CategoryViewModel.CategoryName, 
+                            Mode=TwoWay,
+                            UpdateSourceTrigger=PropertyChanged}" />
+            
+        </StackPanel>
     </Grid>
 </Page>

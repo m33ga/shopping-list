@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ShoppingList.UWP.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -22,14 +23,36 @@ namespace ShoppingList.UWP.Views.Categories
     /// </summary>
     public sealed partial class CategoryFormPage : Page
     {
+        public CategoryViewModel CategoryViewModel { get; set; }
         public CategoryFormPage()
         {
             this.InitializeComponent();
+            CategoryViewModel = new CategoryViewModel();
         }
 
-        private void BtnNew_OnClick(object sender, RoutedEventArgs e)
+        protected override void OnNavigatedTo(NavigationEventArgs e)
         {
-            throw new NotImplementedException();
+            if (e.Parameter  != null)
+            {
+                CategoryViewModel = e.Parameter as CategoryViewModel;
+            }
+            base.OnNavigatedTo(e);
+        }
+
+        //private void BtnNew_OnClick(object sender, RoutedEventArgs e)
+        //{
+        //    throw new NotImplementedException();
+        //}
+
+        private async void BtnSave_OnClick(object sender, RoutedEventArgs e)
+        {
+            await CategoryViewModel.UpsertAsync();
+            Frame.GoBack();
+        }
+
+        private void BtnCancel_OnClick(object sender, RoutedEventArgs e)
+        {
+            Frame.GoBack();
         }
     }
 }
