@@ -59,5 +59,31 @@ namespace ShoppingList.UWP.ViewModels
                 }
             }
         }
+
+        internal async Task<Category> UpsertAsync()
+        {
+            Category res = null;
+
+            using (var uow = new UnitOfWork())
+            {
+                Category.Name = CategoryName;
+                res = await uow.CategoryRepository.UpsertAsync(Category);
+                await uow.SaveAsync();
+
+            }
+
+            return res;
+        }
+
+        internal async void DeleteAsync(Category c)
+        {
+            using (var uow = new UnitOfWork())
+            {
+                uow.CategoryRepository.Delete(c);
+                await uow.SaveAsync();
+                Categories.Remove(c);
+            }
+        }
+
     }
 }
