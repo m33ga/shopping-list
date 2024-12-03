@@ -15,7 +15,8 @@
                 <NavigationViewItem x:Name="nvShoppingList" 
                                     Content="Shopping List" Icon="List"/>
                 <NavigationViewItem x:Name="nvProducts"
-                                    Content="Products" Icon="Shop"/>
+                                    Content="Products" Icon="Shop"
+                                    Tag="products"/>
                 <NavigationViewItem x:Name="nvCategories"
                                     Content="Categories" Icon="Library"
                                     Tag="categories"/>

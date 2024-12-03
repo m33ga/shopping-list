@@ -38,6 +38,9 @@ namespace ShoppingList.UWP
                     case "categories":
                         frmMain.Navigate(typeof(ManageCategoriesPage));
                         break;
+                    case "products":
+                        frmMain.Navigate(typeof(ManageProductsPage));
+                        break;
 
                 }
             }

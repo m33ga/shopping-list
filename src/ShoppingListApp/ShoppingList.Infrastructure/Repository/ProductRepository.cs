@@ -38,5 +38,12 @@ namespace ShoppingList.Infrastructure.Repository
         {
             throw new NotImplementedException();
         }
+
+        public override Task<List<Product>> FindAllAsync()
+        {
+            return _dbcontext.Products
+                .Include(x => x.Category)
+                .ToListAsync();
+        }
     }
 }

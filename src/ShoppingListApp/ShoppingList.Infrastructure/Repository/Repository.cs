@@ -26,7 +26,7 @@ namespace ShoppingList.Infrastructure.Repository
             _dbcontext.Remove(entity);
         }
 
-        public Task<List<T>> FindAllAsync()
+        public virtual Task<List<T>> FindAllAsync()
         {
             return _dbcontext.Set<T>().ToListAsync();
         }

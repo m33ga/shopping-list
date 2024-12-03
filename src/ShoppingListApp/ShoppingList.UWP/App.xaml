@@ -2,6 +2,18 @@
     x:Class="ShoppingList.UWP.App"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:local="using:ShoppingList.UWP">
+    xmlns:local="using:ShoppingList.UWP"
+    xmlns:converters="using:ShoppingList.UWP.Converters">
 
+    <Application.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary>
+                    <converters:BytesToImageConverter x:Key="bytesToImageConverter"/>
+                </ResourceDictionary>
+
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Application.Resources>
 </Application>
+
