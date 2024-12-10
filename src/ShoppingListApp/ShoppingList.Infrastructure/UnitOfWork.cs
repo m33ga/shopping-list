@@ -30,6 +30,9 @@ namespace ShoppingList.Infrastructure
         public ICategoryRepository CategoryRepository
             => new CategoryRepository(_dbcontext);
 
+        public IUserRepository UserRepository
+            => new UserRepository(_dbcontext);
+
         public void Dispose()
         {
             _dbcontext.Dispose();

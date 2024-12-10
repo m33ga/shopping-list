@@ -12,6 +12,8 @@ namespace ShoppingList.Infrastructure
         public DbSet<Product> Products { get; set; }
         public DbSet<Category> Categories { get; set; }
 
+        public DbSet<User> Users { get; set; }
+
         public string DbPath { get; }
 
         public ShoppingListDbContext()
@@ -32,7 +34,6 @@ namespace ShoppingList.Infrastructure
             modelBuilder.Entity<Product>()
                 .HasIndex(x => x.Name)
                 .IsUnique();
-
             modelBuilder.Entity<Product>()
                 .Property(x => x.Name)
                 .IsRequired()
@@ -41,11 +42,36 @@ namespace ShoppingList.Infrastructure
             modelBuilder.Entity<Category>()
                 .HasIndex(x => x.Name)
                 .IsUnique();
-
             modelBuilder.Entity<Category>()
                 .Property(x => x.Name)
                 .IsRequired()
                 .HasMaxLength(50);
+
+            modelBuilder.Entity<User>()
+                .HasIndex(x => x.UserName)
+                .IsUnique();
+            modelBuilder.Entity<User>()
+                .Property(x => x.UserName)
+                .IsRequired()
+                .HasMaxLength(50);
+            modelBuilder.Entity<User>()
+                .Property(x => x.Password)
+                .IsRequired()
+                .HasMaxLength(250);
+            modelBuilder.Entity<User>()
+                .Property(x => x.IsAdmin)
+                .IsRequired();
+            modelBuilder.Entity<User>()
+                .HasData(
+                    new User
+                    {
+                        Id = 1,
+                        UserName = "admin",
+                        Password = "admin",
+                        IsAdmin = true
+                    }
+                );
+
         }
 
     }
