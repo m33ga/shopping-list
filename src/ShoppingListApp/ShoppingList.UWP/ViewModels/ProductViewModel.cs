@@ -16,22 +16,38 @@ namespace ShoppingList.UWP.ViewModels
         private Product _product;
         public Product Product
         {
-            get { return _product; } 
-            set { _product = value; }
+            get { return _product; }
+            set
+            {
+                _product = value; 
+                CategoryName = _product.Category?.Name;
+                ProductName = _product?.Name;
+                Thumb = _product?.Thumb;
+            }
+
         }
 
         private string _productName;
         public string ProductName
         {
             get { return _productName; }
-            set { _productName = value; }
+            set {
+                Set(ref _productName, value);
+                OnPropertyChanged(nameof(Valid));
+                OnPropertyChanged(nameof(Invalid));
+            }
         }
 
         private string _categoryName;
         public string CategoryName
         {
             get { return _categoryName; }
-            set { _categoryName = value; }
+            set
+            {
+                Set(ref _categoryName, value);
+                OnPropertyChanged(nameof(Valid));
+                OnPropertyChanged(nameof(Invalid));
+            }
         }
 
         private byte[] _thumb;
@@ -89,5 +105,38 @@ namespace ShoppingList.UWP.ViewModels
         }
 
         public string Title { get; set; }
+
+        internal async Task<Product> UpsertAsync()
+        {
+            using (var uow = new UnitOfWork())
+            {
+                //get categ
+                Category category = new Category() { Name = CategoryName };
+                Category cateogryUpdated = await uow.CategoryRepository.FindOrCreateAsync(category);
+                await uow.SaveAsync();
+
+                //save product
+                Product.CategoryId = cateogryUpdated.Id;
+                Product.Category = null; //prevent double insert
+                Product.Name = ProductName;
+                Product.Thumb = Thumb;
+                Product prductUpdated = await uow.ProductRepository.UpsertAsync(Product);
+
+                await uow.SaveAsync();
+
+                return prductUpdated;
+            }
+
+        }
+
+        internal async void DeleteAsync()
+        {
+            using (var uow = new UnitOfWork())
+            {
+                uow.ProductRepository.Delete(Product);
+                await uow.SaveAsync();
+                Products.Remove(Product);
+            }
+        }
     }
 }

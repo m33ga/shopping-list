@@ -34,9 +34,43 @@ namespace ShoppingList.Infrastructure.Repository
 
         }
 
-        public override Task<Product> UpsertAsync(Product entity)
+        public override async Task<Product> UpsertAsync(Product entity)
         {
-            throw new NotImplementedException();
+            Product c = null;
+            Product existing = await FindByNameAsync(entity.Name);
+
+            if (existing == null)
+            {
+                if (entity.Id == 0)
+                {
+                    Create(entity);
+                }
+                else
+                {
+                    Update(entity);
+                }
+
+                c = entity;
+            }
+            else if (existing.Id == entity.Id)
+            {
+                if (existing.Name == entity.Name 
+                    || existing.CategoryId != entity.CategoryId 
+                    || existing.Thumb != entity.Thumb)
+                {
+                    _dbcontext.Entry(existing).State = EntityState.Detached;
+                    Update(entity);
+                }
+
+                c = entity;
+            }
+            else
+            {
+                _dbcontext.Entry(entity).State = EntityState.Detached;
+            }
+
+
+            return c;
         }
 
         public override Task<List<Product>> FindAllAsync()

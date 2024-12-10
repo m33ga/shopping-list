@@ -16,6 +16,7 @@ using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
 using ShoppingList.UWP.ViewModels;
 using ShoppingList.UWP.Views.Categories;
+using ShoppingList.Domain.Models;
 
 // The Blank Page item template is documented at https://go.microsoft.com/fwlink/?LinkId=234238
 
@@ -78,12 +79,19 @@ namespace ShoppingList.UWP.Views.Products
 
         private void BtnEdit_OnClick(object sender, RoutedEventArgs e)
         {
-            throw new NotImplementedException();
+            if (sender is FrameworkElement fe && fe.DataContext is Product product)
+            {
+                ProductViewModel.Product = product;
+                Frame.Navigate(typeof(ProductFormPage), ProductViewModel);
+            }
         }
 
         private void BtnDelete_OnClick(object sender, RoutedEventArgs e)
         {
-            throw new NotImplementedException();
+            if (sender is FrameworkElement fe && fe.DataContext is Product product)
+            {
+                ProductViewModel.DeleteAsync();
+            }
         }
     }
 }

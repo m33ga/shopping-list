@@ -13,6 +13,7 @@ using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
 using ShoppingList.UWP.ViewModels;
+using System.Threading.Tasks;
 
 // The Blank Page item template is documented at https://go.microsoft.com/fwlink/?LinkId=234238
 
@@ -30,14 +31,30 @@ namespace ShoppingList.UWP.Views.Products
             this.InitializeComponent();
         }
 
-        private void BtnSave_OnClick(object sender, RoutedEventArgs e)
+        protected override void OnNavigatedTo(NavigationEventArgs e)
         {
-            throw new NotImplementedException();
+            if (e.Parameter != null)
+            {
+                ProductViewModel = e.Parameter as ProductViewModel;
+            }
+            base.OnNavigatedTo(e);
+        }
+
+        private async Task BtnSave_OnClick(object sender, RoutedEventArgs e)
+        {
+            if (await ProductViewModel.UpsertAsync() != null)
+            {
+                Frame.GoBack();
+            }
+            else
+            {
+                FlyoutBase.ShowAttachedFlyout(sender as FrameworkElement);
+            }
         }
 
         private void BtnCancel_OnClick(object sender, RoutedEventArgs e)
         {
-            throw new NotImplementedException();
+            Frame.GoBack();
         }
 
         private async void AsbCategories_OnTextChanged(AutoSuggestBox sender, AutoSuggestBoxTextChangedEventArgs args)
@@ -59,5 +76,12 @@ namespace ShoppingList.UWP.Views.Products
         {
             sender.Text = args.SelectedItem.ToString();
         }
+
+        private void Btn_Upload_OnTapped(object sender, TappedRoutedEventArgs e)
+        {
+            throw new NotImplementedException();
+        }
+
+        
     }
 }

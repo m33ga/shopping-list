@@ -50,16 +50,25 @@
 
             <TextBox x:Name="txtName" 
                  Header="Name" 
-                 Width="300"
                  Text="{x:Bind ProductViewModel.ProductName, 
                       Mode=TwoWay,
                       UpdateSourceTrigger=PropertyChanged}" />
 
             <Image Margin="0, 10"
                    x:Name="thumb"
-                   Source="{x:Bind ProductViewModel.Thumb, Converter={StaticResource bytesToImageConverter}}"/>
+                   Source="{x:Bind ProductViewModel.Thumb, 
+                            Converter={StaticResource bytesToImageConverter}, 
+                            Mode=OneWay}"/>
 
-            <Button Margin="0, 10"/> 
+            <Button Margin="0, 10" x:Name="btn_Upload"
+                    Tapped="Btn_Upload_OnTapped"
+                    Content="Choose file"/>
+
+            <Border Background="Red" Padding="5" 
+                    Visibility="{x:Bind ProductViewModel.Invalid, Mode=OneWay}">
+                <TextBlock Text="Invalid data"/>
+            </Border>
+
         </StackPanel>
     </Grid>
 </Page>
