@@ -136,6 +136,9 @@
     <Compile Include="Views\Products\ManageProductsPage.xaml.cs">
       <DependentUpon>ManageProductsPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\Products\ProductFormPage.xaml.cs">
+      <DependentUpon>ProductFormPage.xaml</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <AppxManifest Include="Package.appxmanifest">
@@ -170,6 +173,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\Products\ManageProductsPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Products\ProductFormPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

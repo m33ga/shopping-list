@@ -51,7 +51,9 @@
                         </Grid.ColumnDefinitions>
                         <!--Product Thumbnail-->
                         <Image Margin="10" x:Name="thumb"
-                                   Source="{x:Bind Thumb, Converter={StaticResource bytesToImageConverter}}" />
+                                   Source="{x:Bind Thumb, Converter={StaticResource bytesToImageConverter}, 
+                                            Mode=TwoWay,
+                                            UpdateSourceTrigger=PropertyChanged}"/>
                         <!--Product Name-->
                         <StackPanel Grid.Column="1">
                             <TextBlock Style="{StaticResource TitleTextBlockStyle}"

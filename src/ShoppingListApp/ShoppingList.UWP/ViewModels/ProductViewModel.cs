@@ -76,6 +76,18 @@ namespace ShoppingList.UWP.ViewModels
             }
         }
 
+        internal async Task<ObservableCollection<Category>> LoadCategoriesByNameStartedWithAsync(string categoryName)
+        {
+            ObservableCollection < Category > res = null;
+            using (var uow = new UnitOfWork())
+            {
+                var list = await uow.CategoryRepository.FindAllByNameStartedWithAsync(categoryName);
+                res = new ObservableCollection<Category>(list);
+            }
+
+            return res;
+        }
+
         public string Title { get; set; }
     }
 }
