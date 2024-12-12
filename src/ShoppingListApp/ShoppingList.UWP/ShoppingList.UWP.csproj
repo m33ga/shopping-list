@@ -127,6 +127,7 @@
     <Compile Include="ViewModels\BindableBase.cs" />
     <Compile Include="ViewModels\CategoryViewModel.cs" />
     <Compile Include="ViewModels\ProductViewModel.cs" />
+    <Compile Include="ViewModels\UserViewModel.cs" />
     <Compile Include="Views\Categories\CategoryFormPage.xaml.cs">
       <DependentUpon>CategoryFormPage.xaml</DependentUpon>
     </Compile>

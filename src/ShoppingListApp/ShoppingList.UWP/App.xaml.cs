@@ -14,6 +14,7 @@ using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
+using ShoppingList.UWP.ViewModels;
 
 namespace ShoppingList.UWP
 {
@@ -22,6 +23,8 @@ namespace ShoppingList.UWP
     /// </summary>
     sealed partial class App : Application
     {
+        public static UserViewModel UserViewModel { get; set; }
+
         /// <summary>
         /// Initializes the singleton application object.  This is the first line of authored code
         /// executed, and as such is the logical equivalent of main() or WinMain().
@@ -30,6 +33,7 @@ namespace ShoppingList.UWP
         {
             this.InitializeComponent();
             this.Suspending += OnSuspending;
+            UserViewModel = new UserViewModel();
         }
 
         /// <summary>
