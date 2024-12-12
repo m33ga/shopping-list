@@ -29,6 +29,7 @@ namespace ShoppingList.UWP.Views.Products
         public ProductFormPage()
         {
             this.InitializeComponent();
+            ProductViewModel = new ProductViewModel();
         }
 
         protected override void OnNavigatedTo(NavigationEventArgs e)
@@ -40,7 +41,7 @@ namespace ShoppingList.UWP.Views.Products
             base.OnNavigatedTo(e);
         }
 
-        private async Task BtnSave_OnClick(object sender, RoutedEventArgs e)
+        private async void BtnSave_OnClick(object sender, RoutedEventArgs e)
         {
             if (await ProductViewModel.UpsertAsync() != null)
             {
@@ -79,7 +80,9 @@ namespace ShoppingList.UWP.Views.Products
 
         private void Btn_Upload_OnTapped(object sender, TappedRoutedEventArgs e)
         {
-            throw new NotImplementedException();
+            // UPLOAD AN IMAGE FROM PC
+
+
         }
 
         

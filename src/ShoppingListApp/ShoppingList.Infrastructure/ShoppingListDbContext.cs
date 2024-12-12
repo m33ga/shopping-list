@@ -20,7 +20,7 @@ namespace ShoppingList.Infrastructure
         {
             var folder = Environment.SpecialFolder.LocalApplicationData;
             var path = Environment.GetFolderPath(folder);
-            DbPath = System.IO.Path.Combine(path, "2024ShoppingListClassA.db");
+            DbPath = System.IO.Path.Combine(path, "2024ShoppingListClassA-withUsers.db");
         }
 
         // The following configures EF to create a Sqlite database file in the

@@ -9,17 +9,22 @@
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
     <Grid>
-        <NavigationView x:Name="nvMain" IsSettingsVisible="False" IsBackButtonVisible="Collapsed" 
-                        ItemInvoked="NvMain_OnItemInvoked">
+        <NavigationView x:Name="nvMain" 
+                        IsSettingsVisible="False" 
+                        IsBackButtonVisible="Collapsed" 
+                        ItemInvoked="NvMain_OnItemInvoked"
+                        PaneTitle="{x:Bind UserViewModel.LoggedUser.UserName, Mode=OneWay}">
             <NavigationView.MenuItems>
                 <NavigationViewItem x:Name="nvShoppingList" 
                                     Content="Shopping List" Icon="List"/>
                 <NavigationViewItem x:Name="nvProducts"
                                     Content="Products" Icon="Shop"
-                                    Tag="products"/>
+                                    Tag="products"
+                                    Visibility="{x:Bind UserViewModel.IsLogged, Mode=OneWay}"/>
                 <NavigationViewItem x:Name="nvCategories"
                                     Content="Categories" Icon="Library"
-                                    Tag="categories"/>
+                                    Tag="categories"
+                                    Visibility="{x:Bind UserViewModel.IsLogged, Mode=OneWay}"/>
                 <NavigationViewItem x:Name="nvUser"
                                     Content="Users" Icon="OtherUser"/>
 
@@ -28,11 +33,20 @@
             <NavigationView.PaneFooter>
                 <StackPanel>
                     <NavigationViewItem x:Name="nvLogin"
-                                        Content="Login" Icon="Permissions"/>
+                                        Content="Login" 
+                                        Icon="Permissions"
+                                        Tapped="NvLogin_OnTapped"
+                                        Visibility="{x:Bind UserViewModel.IsNotLogged, Mode=OneWay}"/>
                     <NavigationViewItem x:Name="nvLogout"
-                                        Content="Logout" Icon="NewWindow"/>
+                                        Content="Logout" 
+                                        Icon="NewWindow"
+                                        Tapped="NvLogout_OnTapped"
+                                        Visibility="{x:Bind UserViewModel.IsLogged, Mode=OneWay}"/>
                     <NavigationViewItem x:Name="nvRegister"
-                                        Content="Register" Icon="ContactInfo"/>
+                                        Content="Register"
+                                        Icon="ContactInfo"
+                                        Tapped="NvRegister_OnTapped"
+                                        Visibility="{x:Bind UserViewModel.IsNotLogged, Mode=OneWay}"/>
                 </StackPanel>
             </NavigationView.PaneFooter>
 
