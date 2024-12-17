@@ -33,6 +33,9 @@ namespace ShoppingList.Infrastructure
         public IUserRepository UserRepository
             => new UserRepository(_dbcontext);
 
+        public IShoppingListRepository ShoppingListRepository
+            => new ShoppingListRepository(_dbcontext);
+
         public void Dispose()
         {
             _dbcontext.Dispose();

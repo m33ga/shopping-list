@@ -12,8 +12,8 @@ namespace ShoppingList.Domain
         // bridge between repos and rest of code
         IProductRepository ProductRepository { get; }
         ICategoryRepository CategoryRepository { get; }
-
         IUserRepository UserRepository { get; }
+        IShoppingListRepository ShoppingListRepository { get; }
         Task SaveAsync();
     }
 }

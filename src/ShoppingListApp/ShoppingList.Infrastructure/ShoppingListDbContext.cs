@@ -11,8 +11,9 @@ namespace ShoppingList.Infrastructure
     {
         public DbSet<Product> Products { get; set; }
         public DbSet<Category> Categories { get; set; }
-
         public DbSet<User> Users { get; set; }
+        public DbSet<ShoppingListEntity> ShoppingLists { get; set; }
+        public DbSet<ShoppingListProduct> ShoppingListProducts { get; set; }
 
         public string DbPath { get; }
 
@@ -39,6 +40,7 @@ namespace ShoppingList.Infrastructure
                 .IsRequired()
                 .HasMaxLength(50);
 
+
             modelBuilder.Entity<Category>()
                 .HasIndex(x => x.Name)
                 .IsUnique();
@@ -46,6 +48,7 @@ namespace ShoppingList.Infrastructure
                 .Property(x => x.Name)
                 .IsRequired()
                 .HasMaxLength(50);
+
 
             modelBuilder.Entity<User>()
                 .HasIndex(x => x.UserName)
@@ -71,6 +74,41 @@ namespace ShoppingList.Infrastructure
                         IsAdmin = true
                     }
                 );
+
+
+            modelBuilder.Entity<ShoppingListEntity>()
+                .HasIndex(x => new {x.Name, x.UserId})
+                .IsUnique();
+            modelBuilder.Entity<ShoppingListEntity>()
+                .Property(x => x.Name)
+                .IsRequired()
+                .HasMaxLength(50);
+            modelBuilder.Entity<ShoppingListEntity>()
+                .Property(x => x.Color)
+                .HasMaxLength(9);
+            modelBuilder.Entity<ShoppingListEntity>()
+                .Property(x => x.Status)
+                .IsRequired();
+            modelBuilder.Entity<ShoppingListEntity>()
+                .Property(x => x.CreationDate)
+                .IsRequired();
+            modelBuilder.Entity<ShoppingListEntity>().HasData(
+                new ShoppingListEntity(1, "list 1", "#333333", 1),
+                new ShoppingListEntity(2, "list 2", "#333333", 1)
+            );
+
+
+            modelBuilder.Entity<ShoppingListProduct>()
+                .HasIndex(x => new { x.ShoppingListEntityId, x.ProductId })
+                .IsUnique();
+            modelBuilder.Entity<ShoppingListProduct>().HasData(
+                new ShoppingListProduct(1, 1),
+                new ShoppingListProduct(2, 1),
+                new ShoppingListProduct(2, 2)
+            );
+
+
+
 
         }
 
