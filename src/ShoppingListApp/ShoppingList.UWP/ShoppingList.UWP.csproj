@@ -142,6 +142,15 @@
     <Compile Include="Views\Products\ProductFormPage.xaml.cs">
       <DependentUpon>ProductFormPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\Products\ProductsPage.xaml.cs">
+      <DependentUpon>ProductsPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ShoppingLists\ShoppingListFormPage.xaml.cs">
+      <DependentUpon>ShoppingListFormPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ShoppingLists\ShoppingListPage.xaml.cs">
+      <DependentUpon>ShoppingListPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\Users\LoginDialog.xaml.cs">
       <DependentUpon>LoginDialog.xaml</DependentUpon>
     </Compile>
@@ -186,6 +195,18 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\Products\ProductFormPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Products\ProductsPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\ShoppingLists\ShoppingListFormPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\ShoppingLists\ShoppingListPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

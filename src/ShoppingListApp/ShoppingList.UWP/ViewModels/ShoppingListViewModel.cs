@@ -75,7 +75,7 @@ namespace ShoppingList.UWP.ViewModels
 
             using (var uow = new UnitOfWork())
             {
-                if (ShoppingList.ShoppingListProducts.Count == 0)
+                if (model.ShoppingListProducts.Count == 0)
                 {
                     uow.ShoppingListRepository.Delete(model);
                     await uow.SaveAsync();

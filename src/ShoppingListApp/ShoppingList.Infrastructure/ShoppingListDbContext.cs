@@ -93,8 +93,8 @@ namespace ShoppingList.Infrastructure
                 .Property(x => x.CreationDate)
                 .IsRequired();
             modelBuilder.Entity<ShoppingListEntity>().HasData(
-                new ShoppingListEntity(1, "list 1", "#333333", 1),
-                new ShoppingListEntity(2, "list 2", "#333333", 1)
+                new ShoppingListEntity(1, "list 1", "#FF0000FF", 1),
+                new ShoppingListEntity(2, "list 2", "#FF0000FF", 1)
             );
 
 

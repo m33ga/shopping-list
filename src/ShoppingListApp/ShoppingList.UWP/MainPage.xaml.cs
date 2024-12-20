@@ -70,6 +70,8 @@ namespace ShoppingList.UWP
 
         }
 
+
+
         private async void NvRegister_OnTapped(object sender, TappedRoutedEventArgs e)
         {
             RegisterDialog dlg = new RegisterDialog();

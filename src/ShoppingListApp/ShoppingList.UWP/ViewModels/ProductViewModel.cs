@@ -12,6 +12,10 @@ namespace ShoppingList.UWP.ViewModels
 {
     public class ProductViewModel : BindableBase
     {
+
+        public ObservableCollection<ShoppingListProduct> ShoppingListProducts { get; set; }
+
+        public ShoppingListEntity ShoppingList { get; set; }
         public ObservableCollection<Product> Products { get; set; }
         private Product _product;
         public Product Product
@@ -77,6 +81,7 @@ namespace ShoppingList.UWP.ViewModels
             Products = new ObservableCollection<Product>();
             Product = new Product();
             Title = "Products";
+            ShoppingListProducts = new ObservableCollection<ShoppingListProduct>();
         }
 
         public async void LoadAllAsync()
@@ -137,6 +142,24 @@ namespace ShoppingList.UWP.ViewModels
                 await uow.SaveAsync();
                 Products.Remove(Product);
             }
+        }
+
+        public void LoadAllByShoppingList()
+        {
+            if (ShoppingList.Id != null)
+            {
+                if (ShoppingList.ShoppingListProducts.Count > 0)
+                {
+                    ShoppingListProducts.Clear();
+                    foreach (var item in ShoppingList.ShoppingListProducts)
+                    {
+                        ShoppingListProducts.Add(item);
+                    }
+                }
+
+                Title = $"Products of {ShoppingList.Name}";
+            }
+            
         }
     }
 }

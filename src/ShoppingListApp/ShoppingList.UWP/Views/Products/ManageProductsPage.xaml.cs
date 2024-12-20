@@ -17,6 +17,7 @@ using Windows.UI.Xaml.Navigation;
 using ShoppingList.UWP.ViewModels;
 using ShoppingList.UWP.Views.Categories;
 using ShoppingList.Domain.Models;
+using ShoppingList.UWP.Views.ShoppingLists;
 
 // The Blank Page item template is documented at https://go.microsoft.com/fwlink/?LinkId=234238
 
@@ -86,11 +87,28 @@ namespace ShoppingList.UWP.Views.Products
             }
         }
 
-        private void BtnDelete_OnClick(object sender, RoutedEventArgs e)
+        private async void BtnDelete_OnClick(object sender, RoutedEventArgs e)
         {
-            if (sender is FrameworkElement fe && fe.DataContext is Product product)
+            var fe = sender as FrameworkElement;
+            var model = fe.DataContext as ShoppingListEntity;
+            if (model != null)
             {
-                ProductViewModel.DeleteAsync();
+                ContentDialog deleteFileDialog = new ContentDialog
+                {
+                    Title = "Delete Product?",
+                    Content = "If you delete this product, you won't be able to recover it. Do you want to delete it?",
+                    PrimaryButtonText = "Delete",
+                    CloseButtonText = "Cancel"
+                };
+                ContentDialogResult result = await deleteFileDialog.ShowAsync();
+                if (result == ContentDialogResult.Primary)
+                {
+                    bool res = await new ShoppingListViewModel().DeleteAsync(model);
+                    if (!res)
+                    {
+                        FlyoutBase.ShowAttachedFlyout(GridShoppingList);
+                    }
+                }
             }
         }
     }
